@@ -18,6 +18,6 @@
 
 ##技术支持
 
-* 开发语言：[python](www.python.org)
+* 开发语言：[python](http://www.python.org)
 * 网页架构：[python flask](http://flask.pocoo.org/)
 * css美工：[bootstrap](http://twitter.github.io/bootstrap/)
