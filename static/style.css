@@ -2,7 +2,11 @@
     padding-bottom: 0px;
 }
 
-.container,.navbar-fixed-top {
+.container .navbar-fixed-top {
+    width: 100%;
+}
+
+.container {
     width: 1240px;
 }
 
