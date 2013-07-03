@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/mycss.css" rel="stylesheet" />  
+  </head>
+
+  <body class="impress-not-supported">
+    <div class="fallback-message">
+      <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+      <p>For the best experience please use the latest <b>Chrome</b> browser.</p>
+    </div>
+
+    <div id="impress">
+      
+      <div id="slide1" class="step slide" data-x="-1000" data-y="-1500">
+        <h2>当你编写markdown文件时：</h2> 
+	    <p>找不到方便编写浏览工具？</p>
+        <p>没有快捷的书写辅助工具？</p>
+      </div>
+      
+      <div id="slide2" class="step slide" data-x="0" data-y="-1500">
+	    <h2>Markdown在线编辑器帮你解决难题!</h2>
+	    <p><a href="http://dillinger.io">dillinger</a>，<a href="http://markable.in/">markable</a></p>
+      </div>
+      
+      <div id="slide3" class="step slide" data-x="1000" data-y="-1500">
+        <div>   
+	      <p>既实用又&nbsp;<b class="scaling">酷</b>&nbsp;!</p>
+          <p style="margin-left:200px;">不是么？</p>
+        </div>
+      </div>
+
+      <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+	    <h1 class="markdown">Markdown</h1>
+	    <span class="title_markdown">在线编译器</span>
+      </div>
+
+      <div id="require" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
+	    <h2>提供的功能：</h2>
+        <div> 
+          <p>在线的markdown书写及预览</p>
+          <p>markdown书写辅助工具</p>
+          <p>生成下载md文件</p>
+        </div>  
+      </div>
+
+      <div id="foundation" class="step" data-x="500" data-y="3000" data-z="-3000" data-rotate="300" data-scale="1">
+	    <h2>后台搭建：</h2>
+	    <p>编程语言：Python</p>
+        <p>构架：Flask</p>
+        <p>时间：2～3天</p>   
+      </div>
+      
+      <div id="front" class="step" data-x="2560" data-y="1700" data-z="-3000" data-rotate="45" data-scale="1">
+	    <h2>前端实现：</h2>
+	    <p><a class="btn btn-primary rotating">Bootstrap</a>&nbsp;For Css</p>
+        <p>Javascript & Jinja2</p>
+        <p>时间：5～6天</p>
+      </div>
+      
+      <div id="difficulty" class="step" data-x="3500" data-y="-750" data-rotate="270" data-scale="5">
+	    <h2>可能面临的<span>难点</span>：</h2>
+	    <p>语言及框架的不熟悉</p>
+	    <p>辅助工具的编写</p>
+        <p style="margin-left: 0px"><b>解决：</b>咨询导师及多尝试、多学习</p>
+      </div>
+      
+      <div id="solution" class="step" data-x="2900" data-y="2200" data-rotate="-45" data-scale="4">
+        <p>没有失败，就没有成功</p>
+      </div>  
+  
+      <div id="do" class="step" data-x="3400" data-y="3300" data-scale="4" data-rotate-x="-60" data-rotate-y="10" data-z="100">
+        <p>有想法，就行动！</p>
+      </div> 
+    
+      <div id="thanks" class="step" data-x="3600" data-y="1500" data-scale="1" data-z="-3000">
+        <p>Thanks</p>
+      </div>
+
+      <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+      </div>
+    </div>
+    <div class="hint">
+      <p>Use a spacebar or arrow keys to navigate</p>
+    </div>
+    <script>
+      if ("ontouchstart" in document.documentElement) {
+      document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+      }
+    </script>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>

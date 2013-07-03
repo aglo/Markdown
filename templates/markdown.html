@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Online Compiler</title>
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.9.1.min.js') }}"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      
+      <div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+	  <div class="container">
+	    <p class="brand">Markdown Online Compiler</p>
+	  </div>
+	</div>
+      </div>
+
+      {% block main %}
+      <div class="markdown-area">
+	<form id="form" class="markdown-form" action="" method="post">
+	  {{ form.hidden_tag() }}
+	  {{ form.title() }}
+	  <div class="repo-nav">
+            <ul class="repo-nav-actions clearfix">
+              <li><a onclick="insert_word_pre('# ')">H1</a></li>
+	      <li class="divider"></li>
+	      <li><a onclick="insert_word_pre('## ')">H2</a></li>
+	      <li class="divider"></li>
+	      <li><a onclick="insert_word_pre('### ')">H3</a></li>
+	      <li class="divider"></li>
+	      <li><a onclick="insert_word_both('**')">B</a></li>
+	      <li class="divider"></li>
+	      <li><a onclick="insert_word_both('_')">I</a></li>
+	      <li class="divider"></li>
+	      <li><a onclick="insert_word_both('`')">C</a></li>
+	      <li class="divider"></li>
+	      <li><a onclick="insert_word_ul()">UL</a></li>
+	      <li class="divider"></li>
+	      <li><a onclick="insert_word_ol()">OL</a></li>
+	      <li class="divider"></li>
+	      <li><a onclick="insert_word_pre('> ')">BQ</a></li>
+	      <li class="divider"></li>
+	      <li><a onclick="insert_word_pre('***')">HR</a></li>
+	      <li class="divider"></li>
+            </ul>
+	  </div>
+	  {{ form.content() }}
+	  <input class="btn btn-primary" onclick="preview()" value="PREVIEW" />
+	  <a href="/markdown/upload" class="btn btn-primary">UPLOAD</a>
+	  <input class="btn btn-primary" onclick="download()" value="DOWNLOAD"/>
+	</form>
+      </div>
+      
+      <div class="markdownout-panel">
+	<div class="markdownout-area">
+	  {% if form.content.data %}
+   	    {{ form.content.data|markdown }}
+	  {% endif %}
+	</div>
+      </div>
+      {% endblock %}
+      
+      <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}" ></script>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,156 @@
+#slide1 h2 {
+    margin-top: 100px;
+    font-size: 44px;
+    padding-bottom: 20px;
+}
+
+#slide1 p {
+    margin-top: 80px;
+    font-size: 36px;
+    text-align: center;
+}
+
+#slide2 h2 {
+    margin-top: 200px;
+    text-align: center;
+    font-size: 40px;
+}
+
+#slide2 p {
+    margin-top: 36px;
+    font-size: 36px;
+    text-align: center;
+}
+    
+#slide3 div {
+    margin-top: 180px;
+}
+
+#slide3 p {
+    text-align: center;
+    font-size: 72px;
+    line-height: 90px;
+}
+
+#slide3.present .scaling {
+    -webkit-transform: scale(1.5);
+    -moz-transform:    scale(1.5);
+    -ms-transform:     scale(1.5);
+    -o-transform:      scale(1.5);
+    transform:         scale(1.5);
+
+    -webkit-transition-delay: 1s;
+    -moz-transition-delay:    1s;
+    -ms-transition-delay:     1s;
+    -o-transition-delay:      1s;
+    transition-delay:         1s;
+}
+
+#slide3 b {
+    display: inline-block;
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+
+#title span {
+    line-height: 200px;
+    margin-left: 400px;
+    font-size: 100px;
+}
+
+#require h2 {
+    margin-top: 50px;
+    font-size: 60px;
+}
+
+#require div {
+    margin-top: 70px;
+    margin-left: 80px;
+    font-size: 48px;
+}
+
+#require p {
+    margin-top: 30px;
+}
+
+#foundation h2 {
+    font-size: 60px;
+}
+
+#foundation p {
+    font-size: 48px;
+    margin-top: 60px;
+    margin-left: 120px;
+}
+
+#front.present .rotating {
+    -webkit-transform: rotate(-15deg);
+    -moz-transform:    rotate(-15deg);
+    -ms-transform:     rotate(-15deg);
+    -o-transform:      rotate(-15deg);
+    transform:         rotate(-15deg);
+
+    -webkit-transition-delay: 0.25s;
+    -moz-transition-delay:    0.25s;
+    -ms-transition-delay:     0.25s;
+    -o-transition-delay:      0.25s;
+    transition-delay:         0.25s;
+}
+
+#front a {
+    font-size: 48px;
+    font-weight: 200;
+    padding: 18px 25px;
+    display: inline-block;
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+
+#front h2 {
+    font-size: 60px;
+}
+
+#front p {
+    font-size: 48px;
+    margin-top: 60px;
+    margin-left: 120px;
+}
+
+#difficulty h2 {
+    font-size: 60px;
+}
+
+@-webkit-keyframes colorchange {
+    0% {color: black; rotate(0deg);}
+    50% {color: red; rotate(180deg);}
+    100% {color: black; rotate(360deg);}
+}
+
+#difficulty.present span {
+    -webkit-animation: colorchange 2s;
+}
+
+#difficulty p {
+    font-size: 48px;
+    margin-top: 70px;
+    margin-left: 120px;
+}
+
+#solution p {
+    font-size: 60px;
+}
+
+#do p {
+    font-size: 60px;
+}
+
+#thanks p {
+    font-size: 90px;
+    color: red;
+}
