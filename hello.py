@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 import os
 from flask import Flask
 from flask.ext.misaka import Misaka
@@ -9,7 +10,10 @@ from werkzeug import secure_filename
 
 UPLOAD_FOLDER = '/home/arkfang/flaskproject/upload'
 ALLOWED_EXTENSIONS = set(['txt', 'md'])
-SECRET_KEY = 'development key' 
+SECRET_KEY = 'development key'
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 app = Flask(__name__)
 Misaka(app)
@@ -33,9 +37,9 @@ def markdown():
     class PostForm(Form):
         content = TextAreaField("content", validators=[Length(min=1, message="Not Null")])
         title = TextField("title", validators=[Length(min=1, message="Not Null")])
-        
+
     form = PostForm(csrf_enabled=False)
-    
+
     if 'files' and 'filename' in session:
         form.content.data = session.pop('files', None)
         form.title.data = session.pop('filename', None)
@@ -56,31 +60,30 @@ def upload_file():
     return render_template('upload.html')
 
 @app.route('/markdown/download/', methods=['GET', 'POST'])
-@app.route('/markdown/download', methods=['GET', 'POST'])    
+@app.route('/markdown/download', methods=['GET', 'POST'])
 def download_file():
     class PostForm(Form):
         content = TextAreaField("content", validators=[Length(min=1, message="Not Null")])
         title = TextField("title", validators=[Length(min=1, message="Not Null")])
-        
+
     DOWNLOAD_PATH = "upload"
-    
+
     form = PostForm(csrf_enabled=False)
-    
+
     if form.content.data:
         filename = form.title.data
         path = ""
-        if filename.endswith(".md"):
-            path = DOWNLOAD_PATH + "/" + filename
-        else:
-            path = DOWNLOAD_PATH + "/" + filename + ".md"
-        
+        if not filename.endswith(".md"):
+            filename = filename + ".md"
+
+        path = DOWNLOAD_PATH + "/" + filename
         path = path.encode("utf-8")
         f = file(path, "w+")
         f.write(form.content.data)
         f.close()
-        
+
     return send_from_directory(DOWNLOAD_PATH, filename, as_attachment=True)
-        
+
 if __name__ == '__main__':
 #    app.run(host='0.0.0.0')
     app.run(debug=True)

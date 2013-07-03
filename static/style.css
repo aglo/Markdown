@@ -36,6 +36,7 @@ textarea#content {
     box-shadow: 3px 3px 3px black;
     border-color: black;
     border-width: 2px;
+
 }
 
 .markdownout-area {
@@ -60,12 +61,21 @@ textarea#content {
     margin: 0px;
 }
 
+input,a.mkfooter {
+    width: 100px;
+}
+
 .repo-nav .repo-nav-actions li {
     display: inline-block;
     float: left;
     padding: 5px 6px;
     width: 25px;
     font-weight: bold;
+}
+
+.repo-nav .repo-nav-actions li a:hover {
+    Background-color: #DDDDDD;
+    cursor: pointer;
 }
 
 .repo-nav .repo-nav-actions li a {
@@ -85,4 +95,12 @@ textarea#content {
     margin-top: 5px;
     padding: 0;
     width: 2px;
+}
+
+input.modalinput {
+    width: 400px;
+}
+
+.modal-bodyin {
+    margin-left: 40px;
 }

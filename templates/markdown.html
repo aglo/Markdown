@@ -7,11 +7,12 @@
     <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" media="screen">
     <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.9.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
   </head>
 
   <body>
     <div class="container">
-      
+
       <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 	  <div class="container">
@@ -27,35 +28,38 @@
 	  {{ form.title() }}
 	  <div class="repo-nav">
             <ul class="repo-nav-actions clearfix">
-              <li><a onclick="insert_word_pre('# ')">H1</a></li>
+              <li><a onclick="insert_word_pre('# ')" role="button">H1</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_pre('## ')">H2</a></li>
+	      <li><a onclick="insert_word_pre('## ')" role="button">H2</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_pre('### ')">H3</a></li>
+	      <li><a onclick="insert_word_pre('### ')" role="button">H3</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_both('**')">B</a></li>
+	      <li><a onclick="insert_word_both('**')" role="button">B</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_both('_')">I</a></li>
+	      <li><a onclick="insert_word_both('_')" role="button">I</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_both('`')">C</a></li>
+	      <li><a onclick="insert_word_both('`')" role="button">C</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_ul()">UL</a></li>
+	      <li><a onclick="insert_word_ul()" role="button">UL</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_ol()">OL</a></li>
+	      <li><a onclick="insert_word_ol()" role="button">OL</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_pre('> ')">BQ</a></li>
+	      <li><a onclick="insert_word_pre('> ')" role="button">BQ</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_pre('***')">HR</a></li>
+	      <li><a onclick="insert_word_pre('***\n')" role="button">HR</a></li>
 	      <li class="divider"></li>
+	      <li><a id="Pic-cli" href="#Image" role="button" data-toggle="modal">P</a></li>
+	      <li class="divider"></li>
+	      <li><a id="Lin-cli" href="#Link" role="button" data-toggle="modal">L</a></li>
             </ul>
 	  </div>
 	  {{ form.content() }}
-	  <input class="btn btn-primary" onclick="preview()" value="PREVIEW" />
-	  <a href="/markdown/upload" class="btn btn-primary">UPLOAD</a>
-	  <input class="btn btn-primary" onclick="download()" value="DOWNLOAD"/>
+	  <input class="btn btn-primary mkfooter" onclick="preview()" value="PREVIEW" />
+	  <a href="/markdown/upload" class="btn btn-primary mkfooter">UPLOAD</a>
+	  <input class="btn btn-primary mkfooter" onclick="download()" value="DOWNLOAD"/>
 	</form>
       </div>
-      
+
       <div class="markdownout-panel">
 	<div class="markdownout-area">
 	  {% if form.content.data %}
@@ -63,10 +67,47 @@
 	  {% endif %}
 	</div>
       </div>
+
+      <div id="Image" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	  <h3>Insert Image</h3>
+	</div>
+	<div class="modal-body">
+	  <div class="modal-bodyin">
+	    <h4>Image TEXT</h4>
+	    <input id="imagetext" type="text" class="modalinput" />
+	    <h4>Image URL</h4>
+	    <input id="imageurl" type="text" class="modalinput" />
+	  </div>
+	</div>
+	<div class="modal-footer">
+	  <button class="btn" ariaaaa-hidden="true" data-dismiss="modal" >Close</button>
+	  <button class="btn btn-primary datadis" onclick="insert_link('image')">OK</button>
+	</div>
+      </div>
+
+      <div id="Link" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	  <h3>Insert Link</h3>
+	</div>
+	<div class="modal-body">
+	  <div class="modal-bodyin">
+	    <h4>Link Text</h4>
+	    <input id="linktext" type="text" class="modalinput" />
+	    <h4>Link URL</h4>
+	    <input id="linkurl" type="text" class="modalinput" />
+	  </div>
+	</div>
+	<div class="modal-footer">
+	  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	  <button class="btn btn-primary datadis" onclick="insert_link('link')">OK</button>
+	</div>
+      </div>
       {% endblock %}
-      
+
       <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}" ></script>
     </div>
   </body>
 </html>
-
