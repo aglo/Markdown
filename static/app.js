@@ -1,16 +1,12 @@
 function preview() {
     var form = $("#form");
-    console.log(form.attr('action'));
     form.attr('action', '/markdown');
-    console.log(form.attr('action'));
     form.submit();
 }
 
 function download() {
     var form = $("#form");
-    console.log(form.attr('action'));
     form.attr('action', '/markdown/download');
-    console.log(form.attr('action'));
     form.submit();
 }
 
