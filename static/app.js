@@ -36,7 +36,6 @@
 		this.setSelectionRange(start, end);
 	    } else if (this.createTextRange) {
 		var range = this.createTextRange();
-		console.log(22);
 		range.collapse(true);
 		range.moveEnd('character', end);
 		range.moveStart('character', start);

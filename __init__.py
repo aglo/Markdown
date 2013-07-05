@@ -9,7 +9,7 @@ from flask import send_from_directory
 from flask.ext.wtf import Form, TextAreaField, Length, TextField
 from werkzeug import secure_filename
 
-UPLOAD_FOLDER = os.path.abspath('upload')
+UPLOAD_FOLDER = '~/markdownOnline/upload'
 ALLOWED_EXTENSIONS = set(['txt', 'md'])
 SECRET_KEY = 'development key'
 
