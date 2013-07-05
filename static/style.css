@@ -54,7 +54,7 @@ textarea#content {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     margin: 10px auto;
     margin-bottom: 0px;
-    width: 560px;
+    width: 548px;
     margin-left: 0px;
 }
 .repo-nav ul {
@@ -62,7 +62,7 @@ textarea#content {
 }
 
 input,a.mkfooter {
-    width: 100px;
+    width: 150px;
 }
 
 .repo-nav .repo-nav-actions li {
@@ -103,4 +103,8 @@ input.modalinput {
 
 .modal-bodyin {
     margin-left: 40px;
+}
+
+input[type="text"] {
+    height: 30px;
 }

@@ -4,21 +4,62 @@ import os
 from flask import Flask
 from flask.ext.misaka import Misaka
 from flask import url_for
-from flask import render_template, request, redirect, session, send_from_directory
+from flask import render_template, request, redirect, session
+from flask import send_from_directory
 from flask.ext.wtf import Form, TextAreaField, Length, TextField
 from werkzeug import secure_filename
 
-UPLOAD_FOLDER = '/home/arkfang/flaskproject/upload'
+UPLOAD_FOLDER = os.path.abspath('upload')
 ALLOWED_EXTENSIONS = set(['txt', 'md'])
 SECRET_KEY = 'development key'
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 app = Flask(__name__)
 Misaka(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = SECRET_KEY
+
+def decode_heuristically(string, enc = None, denc = sys.getdefaultencoding()):
+    """
+    Try to interpret 'string' using several possible encodings.
+    @input : string, encode type.
+    @output: a list [decoded_string, flag_decoded, encoding]
+    """
+    if isinstance(string, unicode):
+        return string, 0, "utf-8"
+    try:
+        new_string = unicode(string, "ascii")
+        return string, 0, "ascii"
+    except UnicodeError:
+        encodings = ["utf-8", "iso-8859-1", "cp1252", "iso-8859-15"]
+
+        if denc != "ascii":
+            encodings.insert(0, denc)
+        if enc:
+            encodings.insert(0, enc)
+
+        for enc in encodings:
+            if (enc in ("iso-8859-15", "iso-8859-1") and
+                re.search(r"[\x80-\x9f]", string) is not None):
+                continue
+            if (enc in ("iso-8859-1", "cp1252") and
+                re.search(r"[\xa4\xa6\xa8\xb4\xb8\xbc-\xbe]", string)\
+                is not None):
+                continue
+
+            try:
+                new_string = unicode(string, enc)
+            except UnicodeError:
+                pass
+            else:
+                if new_string.encode(enc) == string:
+                    return new_string, 0, enc
+
+    #If unable to decode,doing force decoding i.e.neglecting those chars.
+    output = [(unicode(string, enc, "ignore"), enc) for enc in encodings]
+    output = [(len(new_string[0]), new_string) for new_string in output]
+    output.sort()
+    new_string, enc = output[-1][1]
+    return new_string, 1, enc
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -49,11 +90,11 @@ def markdown():
 @app.route('/markdown/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
-        print "why kidding me!"
         file = request.files['uploadfile']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            session['files'] = file.stream.read()
+            file_content = decode_heuristically(file.stream.read(), "utf-8")[0]
+            session['files'] = file_content
             session['filename'] = file.filename
             return redirect(url_for("markdown"))
 
