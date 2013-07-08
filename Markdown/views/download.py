@@ -13,7 +13,6 @@ def download_file():
         title = TextField("title", validators=[Length(min=1, message="Not Null")])
 
     form = PostForm(csrf_enabled=False)
-    print os.path.expanduser('~')
     DOWNLOAD_PATH = os.path.expanduser('~') + "/MarkdownOnline/download"
 
     if form.content.data:
