@@ -15,7 +15,7 @@ setup (
         "Flask==0.10.1",
         "WTForms==1.0.4",
         "misaka==1.0.2",
-        "Flask-Misaka==0.1.1"
+        "Flask-Misaka==0.1.1",
         "Flask-WTF==0.8.4"
     ]
 )
