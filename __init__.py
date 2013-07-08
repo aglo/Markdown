@@ -9,13 +9,11 @@ from flask import send_from_directory
 from flask.ext.wtf import Form, TextAreaField, Length, TextField
 from werkzeug import secure_filename
 
-UPLOAD_FOLDER = '~/markdownOnline/upload'
 ALLOWED_EXTENSIONS = set(['txt', 'md'])
 SECRET_KEY = 'development key'
 
 app = Flask(__name__)
 Misaka(app)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = SECRET_KEY
 
 def decode_heuristically(string, enc = None, denc = sys.getdefaultencoding()):
@@ -107,7 +105,7 @@ def download_file():
         content = TextAreaField("content", validators=[Length(min=1, message="Not Null")])
         title = TextField("title", validators=[Length(min=1, message="Not Null")])
 
-    DOWNLOAD_PATH = "upload"
+    DOWNLOAD_PATH = "~/MarkdownOnline/download"
 
     form = PostForm(csrf_enabled=False)
 
