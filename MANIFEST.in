@@ -1,3 +1,2 @@
-print "i am here"
 recursive-include Markdown/templates *
 recursive-include Markdown/static *

@@ -8,12 +8,13 @@ from flask import send_from_directory
 from flask.ext.wtf import Form, TextAreaField, Length, TextField
 from werkzeug import secure_filename
 
-SECRET_KEY = 'development key'
-DOWNLOAD_PATH = "~/markdownOnline/download"
-
 app = Flask(__name__)
 Misaka(app)
-app.secret_key = SECRET_KEY
+
+from Markdown import default_settings
+app.config.from_object(default_settings)
+
+app.secret_key = app.config["SECRET_KEY"]
 
 #
 #load views
