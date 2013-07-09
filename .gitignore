@@ -48,3 +48,5 @@ Thumbs.db
 target/
 build/
 upload/
+*.egg-info/
+dist/
