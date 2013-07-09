@@ -47,13 +47,13 @@
 
 function preview() {
     var form = $("#form");
-    form.attr('action', '/markdown');
+    form.attr('action', '/');
     form.submit();
 }
 
 function download() {
     var form = $("#form");
-    form.attr('action', '/markdown/download');
+    form.attr('action', '/download');
     form.submit();
 }
 

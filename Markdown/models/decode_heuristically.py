@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 import sys
 
-# -*- coding: utf-8 -*-
 def decode_heuristically(string, enc = None, denc = sys.getdefaultencoding()):
     """
     Try to interpret 'string' using several possible encodings.

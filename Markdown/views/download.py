@@ -6,8 +6,8 @@ from flask.ext.wtf import Form, TextField, TextAreaField, Length
 from Markdown import app
 from Markdown import default_settings
 
-@app.route('/markdown/download/', methods=['GET', 'POST'])
-@app.route('/markdown/download', methods=['GET', 'POST'])
+@app.route('/download/', methods=['GET', 'POST'])
+@app.route('/download', methods=['GET', 'POST'])
 def download_file():
     class PostForm(Form):
         content = TextAreaField("content", validators=[Length(min=1, message="Not Null")])
@@ -28,4 +28,4 @@ def download_file():
         f.close()
         return send_from_directory(app.config["DOWNLOAD_PATH"], filename, as_attachment=True)
 
-    return redirect(url_for("markdown"))
+    return redirect(url_for("/"))
