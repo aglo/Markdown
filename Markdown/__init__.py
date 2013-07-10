@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+
 from flask import Flask
 from flask.ext.misaka import Misaka
 from flask import url_for

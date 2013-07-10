@@ -18,7 +18,6 @@ def download():
         path = ""
         if not filename.endswith(".md"):
             filename = filename + ".md"
-
         path = app.config["DOWNLOAD_PATH"] + "/" + filename
         path = path.encode("utf-8")
         f = file(path, "w+")

@@ -29,37 +29,36 @@
 	  {{ form.title() }}
 	  <div class="repo-nav">
             <ul class="repo-nav-actions clearfix">
-              <li><a onclick="insert_word_pre('head1')" role="button">H1</a></li>
+              <li><a title="Head1" id="hd1" role="button">H1</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_pre('head2')" role="button">H2</a></li>
+	      <li><a title="Head2" id="hd2" role="button">H2</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_pre('head3')" role="button">H3</a></li>
+	      <li><a title="Head3" id="hd3" role="button">H3</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_both('bold')" role="button">B</a></li>
+	      <li><a title="Bold" id="Bol" role="button">B</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_both('italic')" role="button">I</a></li>
+	      <li><a title="Italic" id="Ita" role="button">I</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_both('code')" role="button">C</a></li>
+	      <li><a title="Code" id="Cod" role="button">C</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_ul()" role="button">UL</a></li>
+	      <li><a title="Unordered List" id="Uolist" role="button">UL</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_ol()" role="button">OL</a></li>
+	      <li><a title="Ordered List" id="Olist" role="button">OL</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_pre('bq')" role="button">BQ</a></li>
+	      <li><a title="Blockquote" id="Blo" role="button">BQ</a></li>
 	      <li class="divider"></li>
-	      <li><a onclick="insert_word_pre('hr')" role="button">HR</a></li>
+	      <li><a title="Horizontal Rule" id="Hor" role="button">HR</a></li>
 	      <li class="divider"></li>
-	      <li><a id="Pic-cli" href="#Image" role="button" data-toggle="modal">P</a></li>
+	      <li><a id="Pic-cli" title="Picture" href="#Image" role="button" data-toggle="modal">P</a></li>
 	      <li class="divider"></li>
-	      <li><a id="Lin-cli" href="#Link" role="button" data-toggle="modal">L</a></li>
+	      <li><a id="Lin-cli" title="Link" href="#Link" role="button" data-toggle="modal">L</a></li>
 	      <li class="divider"></li>
-	      <li><a id="Clean" role="button">CL</li>
+	      <li><a id="Clean" title="Clean" role="button">CL</li>
             </ul>
 	  </div>
 	  {{ form.content() }}
       </form>
-      <a id="preview" class="btn btn-primary mkfooter">PREVIEW</a>
-      <a href="/upload" class="btn btn-primary mkfooter">UPLOAD</a>
+      <a id="upload" class="btn btn-primary mkfooter" href="#Upload" data-toggle="modal">UPLOAD</a>
       <a id="download" class="btn btn-primary mkfooter">DOWNLOAD</a>
       </div>
 
@@ -105,6 +104,23 @@
 	<div class="modal-footer">
 	  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 	  <button class="btn btn-primary datadis" onclick="insert_link('link')">OK</button>
+	</div>
+      </div>
+
+      <div id="Upload" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	  <h3>Upload file</h3>
+	</div>
+	<div class="modal-body">
+	  <div class="modal-bodyin">
+	    <div>
+	      <form id="uploadform" enctype="multipart/form-data">
+		<input type="file" id="uploadfile" name="file" />
+		<a id="uploadok" class="btn">OK</a>
+	      </form>
+	    </div>
+	  </div>
 	</div>
       </div>
       {% endblock %}

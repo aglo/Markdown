@@ -45,7 +45,7 @@
     };
 })(jQuery);
 
-$("a#preview").bind('click', function() {
+$("#content").on('keyup', function() {
     $.post('/preview', {
 	text: $("#content").val()
     }, function(data) {
@@ -54,9 +54,109 @@ $("a#preview").bind('click', function() {
     return false;
 });
 
-$("a#download").bind('click', function() {
+$("a#download").on('click', function() {
     $("#form").attr("action","/download");
     $("#form").submit();
+});
+
+$("#hd1").on('click', function() {
+    insert_word_pre('head1');
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
+
+$("#hd2").on('click', function() {
+    insert_word_pre('head2');
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
+
+$("#hd3").on('click', function() {
+    insert_word_pre('head3');
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
+
+$("#Bol").on('click', function() {
+    insert_word_both('bold');
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
+
+$("#Ita").on('click', function() {
+    insert_word_both('italic');
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
+
+$("#Cod").on('click', function() {
+    insert_word_both('code');
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
+
+$("#Uolist").on('click', function() {
+    insert_word_ul();
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
+
+$("#Olist").on('click', function() {
+    insert_word_ol();
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
+
+$("#Blo").on('click', function() {
+    insert_word_pre('bq');
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
+
+$("#Hor").on('click', function() {
+    insert_word_pre('hr');
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
 });
 
 function insert_word_pre(str) {
@@ -225,11 +325,23 @@ function insert_link(str) {
 
     $("#content").val(tmpStr);
     $("button.datadis").attr("data-dismiss", "modal");
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
 }
 
-$("#Clean").bind("click", function() {
+$("#Clean").on("click", function() {
     $("#content").val("");
     $("#title").val("");
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
 });
 
 $("#Pic-cli").on("click", function() {
@@ -257,9 +369,32 @@ $("#Lin-cli").on("click", function() {
 $(window).load(function () {
     $("#title").val(localStorage.getItem('mdtitle'));
     $("#content").val(localStorage.getItem('mdcontent'));
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
 });
 
-$(window).bind('beforeunload', function () {
+$(window).on('beforeunload', function () {
     localStorage.setItem('mdcontent', $("#content").val());
     localStorage.setItem('mdtitle', $("#title").val());
+});
+
+$("#uploadok").on('click', function() {
+    var formData = new FormData();
+    formData.append('uploadfile', $("#uploadfile")[0].files[0]);
+    $.ajax({
+	url: '/upload',
+	type: 'POST',
+	data: formData,
+	processData: false,
+	contentType: false
+    }).done(function (data) {
+	$("#content").val(data.content);
+	$("#title").val(data.title);
+	$("#dictionary").html(data.text);
+    }, "json");
+    $(this).attr("data-dismiss", "modal");
 });
