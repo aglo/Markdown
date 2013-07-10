@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+
 from flask import Flask
 from flask.ext.misaka import Misaka
 from flask import url_for
@@ -15,6 +16,9 @@ from Markdown import default_settings
 app.config.from_object(default_settings)
 
 app.secret_key = app.config["SECRET_KEY"]
+
+if not os.path.exists(app.config["DOWNLOAD_PATH"]):
+    os.makedirs(app.config["DOWNLOAD_PATH"])
 
 #
 #load views

@@ -6,12 +6,11 @@ from Markdown import app
 @app.route('/', methods=['GET', 'POST'])
 def markdown():
     class PostForm(Form):
-        content = TextAreaField("content", validators=[Length(min=1, message="Not Null")])
+
+        content = TextAreaField(
+            "content", validators=[Length(min=1, message="Not Null")])
         title = TextField("title", validators=[Length(min=1, message="Not Null")])
 
     form = PostForm(csrf_enabled=False)
 
-    if 'files' and 'filename' in session:
-        form.content.data = session.pop('files', None)
-        form.title.data = session.pop('filename', None)
     return render_template('markdown.html', form=form)
