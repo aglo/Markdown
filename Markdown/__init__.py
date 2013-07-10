@@ -17,6 +17,9 @@ app.config.from_object(default_settings)
 
 app.secret_key = app.config["SECRET_KEY"]
 
+if not os.path.exists(app.config["DOWNLOAD_PATH"]):
+    os.makedirs(app.config["DOWNLOAD_PATH"])
+
 #
 #load views
 #

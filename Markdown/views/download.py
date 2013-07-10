@@ -19,10 +19,11 @@ def download():
         if not filename.endswith(".md"):
             filename = filename + ".md"
         path = app.config["DOWNLOAD_PATH"] + "/" + filename
-        path = path.encode("utf-8")
         f = file(path, "w+")
-        f.write(content)
+        f.write(content.encode("utf-8"))
         f.close()
-        return send_from_directory(app.config["DOWNLOAD_PATH"], filename, as_attachment=True)
+        return send_from_directory(app.config["DOWNLOAD_PATH"],
+                                   filename.encode("utf-8"),
+                                   as_attachment=True)
 
     return redirect(url_for("markdown"))
