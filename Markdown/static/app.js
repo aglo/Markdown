@@ -45,17 +45,19 @@
     };
 })(jQuery);
 
-function preview() {
-    var form = $("#form");
-    form.attr('action', '/');
-    form.submit();
-}
+$("a#preview").bind('click', function() {
+    $.post('/preview', {
+	text: $("#content").val()
+    }, function(data) {
+	$('#dictionary').html(data.text);
+    }, "json");
+    return false;
+});
 
-function download() {
-    var form = $("#form");
-    form.attr('action', '/download');
-    form.submit();
-}
+$("a#download").bind('click', function() {
+    $("#form").attr("action","/download");
+    $("#form").submit();
+});
 
 function insert_word_pre(str) {
 
@@ -225,6 +227,11 @@ function insert_link(str) {
     $("button.datadis").attr("data-dismiss", "modal");
 }
 
+$("#Clean").bind("click", function() {
+    $("#content").val("");
+    $("#title").val("");
+});
+
 $("#Pic-cli").on("click", function() {
     var startPos = $("#content").getCursorPositionStart();
     var endPos = $("#content").getCursorPositionEnd();
@@ -245,4 +252,14 @@ $("#Lin-cli").on("click", function() {
 	$("#linktext").val($("#content").val().substring(startPos, endPos));
     }
     $("#linkurl").val("");
+});
+
+$(window).load(function () {
+    $("#title").val(localStorage.getItem('mdtitle'));
+    $("#content").val(localStorage.getItem('mdcontent'));
+});
+
+$(window).bind('beforeunload', function () {
+    localStorage.setItem('mdcontent', $("#content").val());
+    localStorage.setItem('mdtitle', $("#title").val());
 });

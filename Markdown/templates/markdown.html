@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Markdown Online Compiler</title>
-    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.1.0/bootstrap-modal.min.css" rel="stylesheet" media="screen">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.9.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.1.0/bootstrap-modal.pack.min.js"></script>
   </head>
 
   <body>
@@ -51,20 +52,21 @@
 	      <li><a id="Pic-cli" href="#Image" role="button" data-toggle="modal">P</a></li>
 	      <li class="divider"></li>
 	      <li><a id="Lin-cli" href="#Link" role="button" data-toggle="modal">L</a></li>
+	      <li class="divider"></li>
+	      <li><a id="Clean" role="button">CL</li>
             </ul>
 	  </div>
 	  {{ form.content() }}
-	  <input class="btn btn-primary mkfooter" onclick="preview()" value="PREVIEW" />
-	  <a href="/upload" class="btn btn-primary mkfooter">UPLOAD</a>
-	  <input class="btn btn-primary mkfooter" onclick="download()" value="DOWNLOAD"/>
-	</form>
+      </form>
+      <a id="preview" class="btn btn-primary mkfooter">PREVIEW</a>
+      <a href="/upload" class="btn btn-primary mkfooter">UPLOAD</a>
+      <a id="download" class="btn btn-primary mkfooter">DOWNLOAD</a>
       </div>
 
       <div class="markdownout-panel">
 	<div class="markdownout-area">
-	  {% if form.content.data %}
-   	    {{ form.content.data|markdown }}
-	  {% endif %}
+	  <div id="dictionary">
+	  </div>
 	</div>
       </div>
 

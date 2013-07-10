@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
 import os
 
-from flask import send_from_directory, redirect, url_for
+from flask import send_from_directory, redirect, url_for, request, jsonify
 from flask.ext.wtf import Form, TextField, TextAreaField, Length
 from Markdown import app
 from Markdown import default_settings
 
 @app.route('/download/', methods=['GET', 'POST'])
 @app.route('/download', methods=['GET', 'POST'])
-def download_file():
-    class PostForm(Form):
-        content = TextAreaField("content", validators=[Length(min=1, message="Not Null")])
-        title = TextField("title", validators=[Length(min=1, message="Not Null")])
+def download():
 
-    form = PostForm(csrf_enabled=False)
+    title = request.form["title"]
+    content = request.form["content"]
 
-    if form.content.data:
-        filename = form.title.data
+    if content:
+        filename = title
         path = ""
         if not filename.endswith(".md"):
             filename = filename + ".md"
@@ -24,8 +22,8 @@ def download_file():
         path = app.config["DOWNLOAD_PATH"] + "/" + filename
         path = path.encode("utf-8")
         f = file(path, "w+")
-        f.write(form.content.data)
+        f.write(content)
         f.close()
         return send_from_directory(app.config["DOWNLOAD_PATH"], filename, as_attachment=True)
 
-    return redirect(url_for("/"))
+    return redirect(url_for("markdown"))
