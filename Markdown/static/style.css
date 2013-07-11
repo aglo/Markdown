@@ -27,15 +27,15 @@ textarea#content {
 
 .markdownout-panel {
     margin-left: 30px;
-    margin-top: 90px;
+    margin-top: 50px;
     width: 600px;
-    height: 600px;
+    height: 700px;
     float: left;
     overflow: auto;
     border-radius: 4px 4px 4px 4px;
     box-shadow: 3px 3px 3px black;
     border-color: black;
-    border-width: 2px;
+    border-width: 10px;
 
 }
 
@@ -54,7 +54,7 @@ textarea#content {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     margin: 10px auto;
     margin-bottom: 0px;
-    width: 548px;
+    width: 560px;
     margin-left: 0px;
 }
 .repo-nav ul {

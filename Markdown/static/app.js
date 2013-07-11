@@ -398,3 +398,45 @@ $("#uploadok").on('click', function() {
     }, "json");
     $(this).attr("data-dismiss", "modal");
 });
+
+$("#content").on("keydown", function (e) {
+    if (e.altKey && e.ctrlKey && e.which == 49) {
+	insert_word_pre('head1');
+    }
+    if (e.altKey && e.ctrlKey && e.which == 50) {
+	insert_word_pre('head2');
+    }
+    if (e.altKey && e.ctrlKey && e.which == 51) {
+	insert_word_pre('head3');
+    }
+    if (e.altKey && e.ctrlKey && e.which == 52) {
+	insert_word_both('bold');
+    }
+    if (e.altKey && e.ctrlKey && e.which == 53) {
+	insert_word_both('italic');
+    }
+    if (e.altKey && e.ctrlKey && e.which == 54) {
+	insert_word_both('code');
+    }
+    if (e.altKey && e.ctrlKey && e.which == 55) {
+	insert_word_ul();
+    }
+    if (e.altKey && e.ctrlKey && e.which == 56) {
+	insert_word_ol();
+    }
+    if (e.altKey && e.ctrlKey && e.which == 57) {
+	insert_word_pre('bq');
+    }
+    if (e.altKey && e.ctrlKey && e.which == 48) {
+	insert_word_pre('hr');
+    }
+    if (e.altKey && e.ctrlKey && e.which == 173) {
+	$("#Pic-cli").click();
+    }
+    if (e.altKey && e.ctrlKey && e.which == 61) {
+	$("#Lic-cli").click();
+    }
+    if (e.altKey && e.ctrlKey && e.which == 220) {
+	$("Clean").click();
+    }
+});
