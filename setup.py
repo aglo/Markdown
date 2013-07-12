@@ -15,9 +15,7 @@ setup (
         "Flask==0.10.1",
         "WTForms==1.0.4",
         "misaka==1.0.2",
-        "Flask-Misaka==0.1.1",
         "Flask-WTF==0.8.4",
-        "markdown2==2.1.0",
         "Pygments==1.6",
         "houdini.py==0.1.0"
     ]
