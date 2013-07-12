@@ -18,6 +18,7 @@ setup (
         "Flask-Misaka==0.1.1",
         "Flask-WTF==0.8.4",
         "markdown2==2.1.0",
-        "Pygments==1.6"
+        "Pygments==1.6",
+        "houdini.py==0.1.0"
     ]
 )
