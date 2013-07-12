@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from flask import render_template, session
 from flask.ext.wtf import Form, TextField, TextAreaField, Length
 from Markdown import app
