@@ -173,10 +173,10 @@ function insert_word_pre(str) {
 	insertstr = "### ";
 	break;
     case "bq":
-	insertstr = "> ";
+	insertstr = "\n> ";
 	break;
     case "hr":
-	insertstr = "***\n";
+	insertstr = "\n***\n";
 	break;
     default:
 	insertstr = str;
