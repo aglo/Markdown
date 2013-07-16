@@ -55,8 +55,12 @@ $("#content").on('keyup', function() {
 });
 
 $("a#download").on('click', function() {
-    $("#form").attr("action","/download");
-    $("#form").submit();
+    if ($("#content").val() == "") {
+	alert("please input content");
+    } else {
+	$("#form").attr("action","/download");
+	$("#form").submit();
+    }
 });
 
 $("#hd1").on('click', function() {
@@ -392,9 +396,14 @@ $("#uploadok").on('click', function() {
 	processData: false,
 	contentType: false
     }).done(function (data) {
-	$("#content").val(data.content);
-	$("#title").val(data.title);
-	$("#dictionary").html(data.text);
+	if (data.error)
+	{
+	    alert(data.error);
+	} else {
+	    $("#content").val(data.content);
+	    $("#title").val(data.title);
+	    $("#dictionary").html(data.text);
+	}
     }, "json");
     $(this).attr("data-dismiss", "modal");
 });

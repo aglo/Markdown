@@ -28,5 +28,5 @@ def upload_file():
             return jsonify(text=md.render(file_content),
                            title=filename,
                            content=file_content)
-
-    return render_template('upload.html')
+        else:
+            return jsonify(error="please upload .txt or .md file")
