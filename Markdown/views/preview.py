@@ -11,8 +11,7 @@ def preview():
 
     renderer = BleepRenderer()
 
-    md = misaka.Markdown(renderer,
-                         extensions=misaka.EXT_FENCED_CODE |
-                         misaka.EXT_NO_INTRA_EMPHASIS)
+    md = misaka.Markdown(renderer, extensions=app.config["EXTENSIONS"])
+
     text = request.form["text"]
     return jsonify(text=md.render(text))

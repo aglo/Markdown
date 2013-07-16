@@ -9,8 +9,6 @@ from pygments.util import ClassNotFound
 
 class BleepRenderer(HtmlRenderer, SmartyPants):
     def block_code(self, text, lang):
-        if not lang:
-            return '\n<pre><code>%s</code></pre>\n' % h.escape_html(text.strip())
         try:
             lexer = get_lexer_by_name(lang, stripall=True)
         except ClassNotFound:

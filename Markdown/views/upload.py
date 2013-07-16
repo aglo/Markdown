@@ -24,9 +24,7 @@ def upload_file():
 
             renderer = BleepRenderer()
 
-            md = misaka.Markdown(renderer,
-                                 extensions=misaka.EXT_FENCED_CODE |
-                                 misaka.EXT_NO_INTRA_EMPHASIS)
+            md = misaka.Markdown(renderer, extensions=app.config["EXTENSIONS"])
             return jsonify(text=md.render(file_content),
                            title=filename,
                            content=file_content)
