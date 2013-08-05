@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-from markdown2 import markdown
-import pygments
+import misaka
 
 from flask import redirect, render_template, session, request, url_for
 from werkzeug import secure_filename
 from Markdown import app
 from flask import jsonify
 from Markdown.models.decode_heuristically import decode_heuristically
+from Markdown.models.markdown import BleepRenderer
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -21,10 +21,12 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file_content = decode_heuristically(file.stream.read(), "utf-8")[0]
-            return jsonify(text=markdown(file_content,
-                                         extras=['fenced-code-blocks',
-                                                 'code-color']),
+
+            renderer = BleepRenderer()
+
+            md = misaka.Markdown(renderer, extensions=app.config["EXTENSIONS"])
+            return jsonify(text=md.render(file_content),
                            title=filename,
                            content=file_content)
-
-    return render_template('upload.html')
+        else:
+            return jsonify(error="please upload .txt or .md file")

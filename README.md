@@ -15,10 +15,16 @@ An Online Compiler for Markdown files
 
 1. Install virtualenv: `$ sudo easy_install virtualenv`
    or even better:`$ sudo pip install virtualenv`
-   
+
    If you use Ubuntu, also try: `$ sudo apt-get install python-virtualenv`
-2. Get into the virtualenv from the root of the code and run in development mode:
-   
+2. Create your own environment.
+
+   ```
+   $ cd Markdown(or the name of which dir you put the source code in)
+   $ virtualenv venv
+   ```
+3. Get into the virtualenv from the root of the code and run in development mode:
+
    ```
    $ . venv/bin/activate
    $ (venv) python setup.py develop
